@@ -1,0 +1,41 @@
+{
+  "name": "funcsync",
+  "description": "JavaScript's function client-server synchronization helper library.",
+  "homepage": "https://github.com/imrefazekas/funcsync",
+  "keywords": [
+    "util",
+    "function",
+    "server",
+    "client",
+    "synchronization"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/imrefazekas/funcsync.git"
+  },
+  "bugs": {
+    "url": "http://github.com/imrefazekas/funcsync/issues"
+  },
+  "author": {
+    "name": "Imre Fazekas",
+    "email": "imre.fazekas@gmail.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "funcsync.js",
+  "version": "1.0.0",
+  "scripts": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.2.0",
+    "grunt-contrib-uglify": "~0.2.2"
+  },
+  "readme": "README.md",
+  "readmeFilename": "README.md",
+  "_id": "funcsync@1.0.0",
+  "_from": "funcsync@~1"
+}

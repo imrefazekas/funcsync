@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script src='funcsync.min.js'></script>
+</head>
+<body>
+	<script type="text/javascript">
+		console.log( funcsync.stringify(
+			{
+				"tab1":[
+					function almafa(){console.log("almafa");},
+					function almafa(){console.log("almafa");}
+				],
+				"tab2": function almafa(){console.log("almafa");}
+			}
+		) );
+	</script>
+</body>
+</html>
