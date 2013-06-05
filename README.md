@@ -7,8 +7,8 @@ Prepares an object - might containing business logic as function - for sending i
 
 Usage:
 
-- [Server-side](server-side)
-- [Client-side](client-side)
+- [Server-side](#server-side)
+- [Client-side](#client-side)
 
 
 ## Server-side
@@ -43,4 +43,3 @@ In <head>
 In any <script> tag
 
 	funcsync.stringify( obj );
- 
