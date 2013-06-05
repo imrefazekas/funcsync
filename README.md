@@ -36,10 +36,10 @@ In [node.js](www.nodejs.org) code:
 
 ## Client-side
 
-In <head>
+In _head_
 
 	<script src='funcsync.min.js'></script>
 
-In any <script> tag
+In any _script_ tag
 
 	funcsync.stringify( obj );
