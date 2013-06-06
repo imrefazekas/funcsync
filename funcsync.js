@@ -16,7 +16,7 @@
 		root.funcsync = funcsync;
 	}
 
-	funcsync.VERSION = "1.0.0";
+	funcsync.VERSION = "1.0.1";
 
 	funcsync.startsWith = function(str, substr){
 		return str.indexOf(substr) === 0;
@@ -73,21 +73,29 @@
 		return res;
 	};
 
-	funcsync.functify = function (obj) {
-		var res;
-		if (funcsync.isString(obj) && funcsync.startsWith(obj, "function ")) res = eval("(" + obj + ")");
-		else if (funcsync.isArray(obj)) {
-			res = [];
-			for (var index in obj)
-				res.push(funcsync.functify(obj[index]));
-		} else if (funcsync.isObject(obj)) {
-			res = {};
-			for (var key in obj)
-				res[key] = funcsync.functify(obj[key]);
-		}
-		else
-			res = obj;
-		return res;
+	funcsync.functify = function (obj, context) {
+		var self = context;
+		return function( tree ){
+
+			function bindify(data) {
+				var res;
+				if (funcsync.isString(data) && funcsync.startsWith(data, "function ")) res = eval("(" + data + ")");
+				else if (funcsync.isArray(data)) {
+					res = [];
+					for (var index in data)
+						res.push(bindify(data[index]));
+				} else if (funcsync.isObject(data)) {
+					res = {};
+					for (var key in data)
+						res[key] = bindify(data[key]);
+				}
+				else
+					res = data;
+				return res;
+			}
+
+			return bindify( tree );
+		}( obj );
 	};
 
 }).call(this);
