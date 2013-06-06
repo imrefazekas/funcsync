@@ -26,13 +26,20 @@ In [node.js](www.nodejs.org) code:
 			function test1(){ console.log("My "); },
 			function test2(){ console.log("dear "); }
 		],
-		"tab2":{ "test3": function(){ console.log("user!"); } }
+		"tab2":{ "test3": function(){ console.log("user:" + self.name); } }
 	};
 	...
 	f.stringify( obj ) // prepare the given object for sending
 	...
-	var fs = f.functify( obj ); // retrieve functions from the obj received
+	var fs = f.functify( obj, {nane:'Bob'} ); // retrieve functions from the obj received
 	fs.tab2.test3();
+
+#### Bind context
+
+The function _functify_ has an optional second parameter: _context_. 
+All function will access this context, through the variable name _self_ while being executed. 
+
+This way you can __bind__ a [knockout.js](http://knockoutjs.com) viewmodel or anything you want and can access it via the name _'self'_.
 
 ## Client-side
 
