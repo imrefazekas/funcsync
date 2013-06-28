@@ -5,15 +5,18 @@
 </head>
 <body>
 	<script type="text/javascript">
-		console.log( funcsync.stringify(
-			{
-				"tab1":[
-					function almafa(){console.log("almafa");},
-					function almafa(){console.log("almafa");}
-				],
-				"tab2": function almafa(){console.log("almafa");}
-			}
-		) );
+		var v = funcsync.functify( funcsync.stringify(
+				{
+					"tab1":[
+						function almafa(){console.log("almafa");},
+						function almafa(){console.log("almafa");}
+					],
+					"tab2":{ "almafa": function(){console.log("almafa", self.name);} }
+				}
+		), {name:'Imi'} );
+		console.log(
+			v.tab2.almafa()
+		);
 	</script>
 </body>
 </html>
