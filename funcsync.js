@@ -16,7 +16,7 @@
 		root.funcsync = funcsync;
 	}
 
-	funcsync.VERSION = "1.0.2";
+	funcsync.VERSION = "1.0.3";
 
 	funcsync.startsWith = function(str, substr){
 		return str.indexOf(substr) === 0;
@@ -38,10 +38,6 @@
 		return toString.call(obj) == "[object " + Date + "]";
 	};
 
-	funcsync.isNumber = function (obj) {
-		return toString.call(obj) == "[object " + Number + "]";
-	};
-
 	funcsync.isFunction = function (obj) {
 		return toString.call(obj) == "[object " + Function + "]";
 	};
@@ -58,7 +54,10 @@
 
 	funcsync.stringify = function (obj) {
 		var res;
-		if (funcsync.isFunction(obj)) res = obj.toString();
+		if (funcsync.isString(obj) || funcsync.isDate(obj) || funcsync.isNumber(obj))
+			res = obj;
+		else if (funcsync.isFunction(obj))
+			res = obj.toString();
 		else if (funcsync.isArray(obj)) {
 			res = [];
 			for (var index in obj)
@@ -79,7 +78,10 @@
 
 			function bindify(data) {
 				var res;
-				if (funcsync.isString(data) && funcsync.startsWith(data, "function ")) res = eval("(" + data + ")");
+				if (funcsync.isString(data) && funcsync.startsWith(data, "function "))
+					res = eval("(" + data + ")");
+				else if (funcsync.isString(data) || funcsync.isDate(data) || funcsync.isNumber(data))
+					res = data;
 				else if (funcsync.isArray(data)) {
 					res = [];
 					for (var index in data)
