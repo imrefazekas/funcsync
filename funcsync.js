@@ -16,7 +16,7 @@
 		root.funcsync = funcsync;
 	}
 
-	funcsync.VERSION = "1.0.3";
+	funcsync.VERSION = "1.0.4";
 
 	funcsync.startsWith = function(str, substr){
 		return str.indexOf(substr) === 0;
@@ -31,7 +31,7 @@
 	};
 
 	funcsync.isNumber = function (obj) {
-		return toString.call(obj) == "[object " + Number + "]";
+		return (toString.call(obj) == "[object " + Number + "]") || !isNaN(obj);
 	};
 
 	funcsync.isDate = function (obj) {
