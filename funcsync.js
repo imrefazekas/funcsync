@@ -16,7 +16,7 @@
 		root.funcsync = funcsync;
 	}
 
-	funcsync.VERSION = "1.0.4";
+	funcsync.VERSION = "1.0.5";
 
 	funcsync.startsWith = function(str, substr){
 		return str.indexOf(substr) === 0;
