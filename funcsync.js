@@ -46,9 +46,9 @@
 		return toString.call(obj) == "[object " + Function + "]";
 	};
 
-	// nativeForEach      = Array.prototype.forEach
+	var nativeForEach = Array.prototype.forEach;
 	funcsync.each = function(obj, iterator, context) {
-		if (obj == null) return;
+		if (obj === null) return;
 		if (nativeForEach && obj.forEach === nativeForEach) {
 			obj.forEach(iterator, context);
 		} else if ( funcsync.isArray(obj) ) {
