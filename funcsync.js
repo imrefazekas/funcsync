@@ -16,7 +16,7 @@
 		root.funcsync = funcsync;
 	}
 
-	funcsync.VERSION = "1.0.5";
+	funcsync.VERSION = "1.0.6";
 
 	funcsync.startsWith = function(str, substr){
 		return str.indexOf(substr) === 0;
@@ -38,8 +38,28 @@
 		return toString.call(obj) == "[object " + Date + "]";
 	};
 
+	funcsync.isArray = Array.isArray || function(obj) {
+		return toString.call(obj) == '[object Array]';
+	};
+
 	funcsync.isFunction = function (obj) {
 		return toString.call(obj) == "[object " + Function + "]";
+	};
+
+	// nativeForEach      = Array.prototype.forEach
+	funcsync.each = function(obj, iterator, context) {
+		if (obj == null) return;
+		if (nativeForEach && obj.forEach === nativeForEach) {
+			obj.forEach(iterator, context);
+		} else if ( funcsync.isArray(obj) ) {
+			for (var i = 0, l = obj.length; i < l; i++) {
+				if (iterator.call(context, obj[i], i, obj) === breaker) return;
+			}
+		} else {
+			for (var key in obj) {
+				if (iterator.call(context, obj[key], key, obj) === breaker) return;
+			}
+		}
 	};
 
 	if (typeof (/./) !== 'function') {
@@ -47,10 +67,6 @@
 			return typeof obj === 'function';
 		};
 	}
-
-	funcsync.isArray = Array.isArray || function (obj) {
-		return "[object Array]" == toString.call(obj);
-	};
 
 	funcsync.stringify = function (obj) {
 		var res;
