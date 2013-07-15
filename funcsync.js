@@ -16,7 +16,7 @@
 		root.funcsync = funcsync;
 	}
 
-	funcsync.VERSION = "1.0.6";
+	funcsync.VERSION = "1.0.7";
 
 	funcsync.startsWith = function(str, substr){
 		return str.indexOf(substr) === 0;
@@ -44,6 +44,9 @@
 
 	funcsync.isFunction = function (obj) {
 		return toString.call(obj) == "[object " + Function + "]";
+	};
+	funcsync.isBoolean = function(obj) {
+		return obj === true || obj === false || toString.call(obj) == '[object Boolean]';
 	};
 
 	var nativeForEach = Array.prototype.forEach;

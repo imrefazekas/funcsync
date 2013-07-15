@@ -1,6 +1,6 @@
 {
   "name": "funcsync",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "JavaScript's function client-server synchronization helper library.",
   "homepage": "https://github.com/imrefazekas/funcsync",
   "keywords": [
@@ -36,6 +36,6 @@
   },
   "readme": "README.md",
   "readmeFilename": "README.md",
-  "_id": "funcsync@1.0.6",
+  "_id": "funcsync@1.0.7",
   "_from": "funcsync@~1"
 }
