@@ -18,6 +18,8 @@
 
 	funcsync.VERSION = "1.0.7";
 
+	var toString = Object.prototype.toString;
+
 	funcsync.startsWith = function(str, substr){
 		return str.indexOf(substr) === 0;
 	};
