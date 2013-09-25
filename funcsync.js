@@ -52,6 +52,7 @@
 	};
 
 	var nativeForEach = Array.prototype.forEach;
+	var breaker = {};
 	funcsync.each = function(obj, iterator, context) {
 		if (obj === null) return;
 		if (nativeForEach && obj.forEach === nativeForEach) {
@@ -72,6 +73,26 @@
 			return typeof obj === 'function';
 		};
 	}
+
+	funcsync.merge = function(){
+		function add(dest, ref){
+			funcsync.each( ref, function(value, key, list){
+				if( !dest[key] )
+					dest[key] = value;
+				else if( funcsync.isObject(value) && funcsync.isObject(dest[key]) ){
+					add( dest[key], value );
+				}
+			} );
+		}
+
+		var dest = arguments[0] || {};
+		var refs = Array.apply(null, arguments).slice(1, arguments.length);
+		funcsync.each(refs, function(ref, key, list){
+			if( funcsync.isObject(ref) )
+				add( dest, ref );
+		});
+		return dest;
+	};
 
 	funcsync.stringify = function (obj) {
 		var res;
