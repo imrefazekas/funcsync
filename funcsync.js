@@ -16,7 +16,7 @@
 		root.funcsync = funcsync;
 	}
 
-	funcsync.VERSION = "1.1.0";
+	funcsync.VERSION = "1.1.1";
 
 	var toString = Object.prototype.toString;
 
