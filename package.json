@@ -1,6 +1,6 @@
 {
   "name": "funcsync",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "JavaScript's function client-server synchronization helper library.",
   "homepage": "https://github.com/imrefazekas/funcsync",
   "keywords": [
@@ -33,8 +33,8 @@
     "gulp": "latest",
     "gulp-jshint": "latest",
     "gulp-load-plugins": "latest",
-    "gulp-rename": "^1.2.0",
+    "gulp-rename": "latest",
     "gulp-uglify": "latest"
   },
-  "_id": "funcsync@1.2.0"
+  "_id": "funcsync@1.2.1"
 }
